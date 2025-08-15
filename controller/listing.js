@@ -13,10 +13,12 @@ module.exports.indexRoute=async(req,res)=>{
     let filename = req.file.filename;
     
     const owner=req.user.userId;
-    const newListing=new Listing( req.body.listing);
+    const {title,description,price,country,location}=req.body;
+    const newListing=new Listing({title,description,price,country,location});
    newListing.owner = owner;
    newListing.image = { url, filename };
-   await newListing.save().then(()=> res.status(200).json(newListing)).catch((err)=>console.log(err));  
+   const result=await newListing.save().then(()=> res.status(200).json(newListing)).catch((err)=>console.log(err));  
+   console.log(`result${result}`);
 }
 
 //show route
