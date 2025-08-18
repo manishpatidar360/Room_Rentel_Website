@@ -23,12 +23,10 @@ module.exports.loginUser=async(req,res)=>{
         return res.status(400).json({message:"pls provide username and password"});
     }
     const user=await User.findOne({username});
-    console.log(user);
     if(!user){
         return res.status(404).json({message:"user not found"})
     }
      const isPasswordCorrect=await bcrypt.compare(password, user.password);
-     console.log(isPasswordCorrect);
     const userid=user._id;
      if(!isPasswordCorrect){
         return res.status(401).json({ message: "Invalid credentials" });
@@ -36,13 +34,13 @@ module.exports.loginUser=async(req,res)=>{
         const token= jwt.sign({
             userId:user._id.toString(),
             email:user.email,  
+            username:user.username,
         },
         process.env.JWT_SECRET_KEY,
         {
           expiresIn:"30d"
         }
     )
-     console.log(token);
     res.status(200).json({ message: "Login successful", token , userid});
     
 }

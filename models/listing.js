@@ -15,6 +15,10 @@ const listingSchema=new mongoose.Schema({
  price:Number,
  location:String,
  country:String,
+ status:{
+   type:String,
+   default:"Available"
+ },
  review:[
    {
       type:mongoose.Schema.Types.ObjectId,

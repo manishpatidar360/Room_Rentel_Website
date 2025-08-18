@@ -4,6 +4,7 @@ const authmiddileware=(req,res,next)=>{
     const token= req.headers.authorization;;
 
     if(!token){
+        console.log('no token');
         return res.status(401).json({msg:"Access denied. No token provided."})
     }
 

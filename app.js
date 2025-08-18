@@ -11,6 +11,7 @@ const ExpressError = require("./public/util/ExpressError.js");
 const listing = require("./Router/listing.js");
 const review = require("./Router/review.js");
 const singup=require('./Router/singup.js');
+const payment=require('./Router/payment.js');
 require("dotenv").config();
 app.use(cors());
 
@@ -30,7 +31,7 @@ async function main(){
 
 app.use("/listing", listing);
  
-
+app.use('/payment',payment)
 
 // reviews route
 
