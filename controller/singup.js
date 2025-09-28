@@ -7,6 +7,7 @@ module.exports.singupUser=async (req,res)=>{
     const userExist=await User.findOne({email});
 
     if(userExist){
+        console.log("user Exist")
         return res.status(400).json({message:"user already exist"});
     }
     const saltRound=10;

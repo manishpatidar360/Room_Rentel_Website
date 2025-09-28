@@ -15,7 +15,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-      folder: "wanderlust_DEV",
+      folder: "shadiApp",
       allowedFormats: ["png", "jpg", "jpeg"],
     },
 });
